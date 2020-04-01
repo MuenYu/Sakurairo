@@ -17,6 +17,7 @@ mashiro_global.ini = new function () {
         coverVideoIni();
         checkskinSecter();
         scrollBar();
+        load_bangumi();
     }
     this.pjax = function () { // pjax reload functions (pjax 重载函数)
         pjaxInit();
@@ -25,6 +26,7 @@ mashiro_global.ini = new function () {
         copy_code_block();
         coverVideoIni();
         checkskinSecter();
+        load_bangumi();
     }
 }
 
@@ -1036,6 +1038,25 @@ setTimeout(function () {
     activate_widget();
 }, 100);
 
+function load_bangumi() {
+    if ($("section").hasClass("bangumi")) {
+        $('body').on('click', '#bangumi-pagination a', function () {
+            $("#bangumi-pagination a").addClass("loading").text("");
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', this.href, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var html = JSON.parse(xhr.responseText);
+                    $("#bangumi-pagination").remove();
+                    $(".row").append(html);
+                }
+            };
+            xhr.send();
+            return false;
+        });
+    }
+}
+
 mashiro_global.ini.normalize();
 loadCSS(mashiro_option.jsdelivr_css_src);
 loadCSS(mashiro_option.entry_content_theme_src);
@@ -1802,6 +1823,9 @@ var home = location.href,
                     }
                 }
             });
+            mb_to_top.onclick = function() {
+                topFunction();
+            }
         }
     }
 $(function () {
