@@ -426,6 +426,8 @@ function get_qq_avatar(){
         }
     } 
 }
+
+
 function get_the_bgm_items($page = 1){
     $cookies = akina_option('bilibili_cookie');
     $url = 'https://api.bilibili.com/x/space/bangumi/follow/list?type=1&pn=' . $page . '&ps=15&follow_status=0&vmid=' . akina_option('bilibili_id');
@@ -440,6 +442,7 @@ function get_the_bgm_items($page = 1){
     $bgmdata = json_decode($response["body"])->data;
     return json_encode($bgmdata);
 }
+
 function get_bgm_items($page = 1){
     $bgm = json_decode(get_the_bgm_items($page),true);
     $totalpage = $bgm["total"] / 15;
@@ -450,7 +453,7 @@ function get_bgm_items($page = 1){
     }
     $lists = $bgm["list"];
     foreach ((array)$lists as $list) {
-        if(preg_match('/已看完/m',$list["new_ep"]['index_show'], $matches_finish)){
+        if(preg_match('/看完/m',$list["progress"], $matches_finish)){
             $percent = 100;
         }else{
             preg_match('/第(\d+)./m',$list['progress'], $matches_progress);
@@ -476,8 +479,9 @@ function get_bgm_items($page = 1){
     $html .= '</div><br><div id="bangumi-pagination">' . $next .'</div>';
     return $html;
 }
+
 function bgm_bilibili(){
     $page = $_GET["page"] ?: 2;
     $html = preg_replace("/\s+|\n+|\r/", ' ', get_bgm_items($page));
     return $response = new WP_REST_Response($html,200);
-} 
+}
