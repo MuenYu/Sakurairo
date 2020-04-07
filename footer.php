@@ -36,7 +36,7 @@
 						<?php if (akina_option('oneword', '1')): ?>
 						<script type="text/javascript" src="https://api.nmomi.com/api/yiyan/index.php/?format=js&charset=utf-8"></script>
                         <?php endif; ?>
-                        <div><script>dutang()</script></div></p>
+                        <!--<div><script>dutang()</script></div></p>-->
 						Theme <a href="https://2heng.xin/theme-sakura/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakurairo</a>  by <a href="https://asuhe.jp/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hitomi</a> 
 					</span>
 				</p>
@@ -95,7 +95,6 @@
 		<div class="search_close"></div>
 	</form>
 	<!-- search end -->
-<?php wp_footer(); ?>
 <?php if(akina_option('site_statistics')){ ?>
 <div class="site-statistics">
 <script type="text/javascript"><?php echo akina_option('site_statistics'); ?></script>
@@ -137,6 +136,7 @@
                 onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
     </div>
 </div>
+<?php wp_footer(); ?>
 <canvas id="night-mode-cover"></canvas>
 <?php if (akina_option('sakura_widget')) : ?>
 	<aside id="secondary" class="widget-area" role="complementary" style="left: -400px;">
