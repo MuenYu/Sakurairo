@@ -9,7 +9,7 @@
 
 require 'update-checker/update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/mirai-mamori/Sakurairo',
+	'https://github.com/MuenYu/Sakurairo',
 	__FILE__,
 	'unique-plugin-or-theme-slug'
 );
