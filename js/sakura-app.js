@@ -1563,19 +1563,17 @@ var home = location.href,
             });
         },
         NH: function () {
-            if(document.body.clientWidth > 860){
-                var h1 = 0;
-                $(window).scroll(function () {
-                    var s = $(document).scrollTop(),
-                        cached = $('.site-header');
-                    if (s == h1) {
-                        cached.removeClass('yya');
-                    }
-                    if (s > h1) {
-                        cached.addClass('yya');
-                    }
+            var h1 = 0;
+            $(window).scroll(function () {
+                var s = $(document).scrollTop(),
+                    cached = $('.site-header');
+                if (s == h1) {
+                    cached.removeClass('yya');
+                }
+                if (s > h1) {
+                    cached.addClass('yya');
+                }
             });
-            }
         },
         XLS: function () {
             $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
