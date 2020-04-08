@@ -912,12 +912,6 @@ function optionsframework_options()
     $options[] = array(
         'name' => __('Check for Updates', 'sakura'), /*检查更新*/
         'desc' => '<a href="https://github.com/MuenYu/Sakurairo/releases/latest">Download the latest version</a>',
-        'id' => "release_info",
-        'std' => "tag",
-        'type' => "images",
-        'options' => array(
-            'tag' => 'https://img.shields.io/github/v/release/mirai-mamori/Sakurairo.svg?style=flat-square',
-        ),
     );
 
     $options[] = array(
